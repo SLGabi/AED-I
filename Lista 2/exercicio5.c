@@ -30,6 +30,7 @@ int main(){
             case 2:
             imprimir(listaPessoas);
             free(listaPessoas);
+            exit(1);
             break;
 
             default:
