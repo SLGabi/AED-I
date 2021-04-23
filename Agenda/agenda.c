@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define tamanho *(int*)(pBuffer)
+#define tamanhoLista *(int*)(pBuffer)
 #define i *(int*)(pBuffer + sizeof(int))
 #define selLer (int*)(pBuffer + sizeof(int) * 2)
 #define sel *(int*)(pBuffer + sizeof(int) * 2) 
@@ -51,10 +51,10 @@ int main(){
     // posição 1: i
     // posição 2: sel (switch)
     // posição 3: flag
-    // posicao 4: tamanho filaP
+    // posicao 4: tamanhoLista filaP
     // posição 5: j
     // posição 6: 10 char de nomeAux 
-    tamanho = 0;
+    tamanhoLista = 0;
     menu(lista, pBuffer);
 }
 
@@ -174,11 +174,11 @@ void inserir(Lista *lista, void *pBuffer){
         novo->anterior = lista->fim; //o anterior do novo nodo aponta pro nodo que a lista->fim aponta
         lista->fim = novo; //e o final da lista passa apontar para o novo nodo
     }
-    tamanho += 1;
+    tamanhoLista += 1;
 }
 
 void imprimir(Lista *lista, void *pBuffer){
-    if(tamanho == 0){
+    if(tamanhoLista == 0){
         printf("lista vazia.\n");
     }
     else{
@@ -193,7 +193,7 @@ void imprimir(Lista *lista, void *pBuffer){
 }
 
 void buscar(Lista *lista, void *pBuffer){
-    if(tamanho == 0){
+    if(tamanhoLista == 0){
         printf("lista vazia.\n");
     }
     else{
@@ -219,7 +219,7 @@ void buscar(Lista *lista, void *pBuffer){
 }
 
 void apagar(Lista *lista, void*pBuffer){
-    if(tamanho == 0){
+    if(tamanhoLista == 0){
         printf("lista vazia.\n");
     }
     else{
@@ -236,7 +236,7 @@ void apagar(Lista *lista, void*pBuffer){
                         lista->inicio = NULL; //seta tudo pra nulo novamente
                         lista->fim = NULL;
                         free(auxiliar);
-                        tamanho -= 1;
+                        tamanhoLista -= 1;
                         flag += 1;
                         return;
                     }
@@ -244,7 +244,7 @@ void apagar(Lista *lista, void*pBuffer){
                         auxiliar->proximo->anterior = NULL; //o anterior do próximo nodo vai apontar pra nulo
                         lista->inicio = auxiliar->proximo; //o inicio da lista agora passa a apontar para o nodo que vem depois do nodo a ser removido
                         free(auxiliar);
-                        tamanho -= 1;
+                        tamanhoLista -= 1;
                         flag += 1;
                         return;
                     }
@@ -254,7 +254,7 @@ void apagar(Lista *lista, void*pBuffer){
                     auxiliar->anterior->proximo = auxiliar->proximo; //o próximo do nodo anterior aponta para o que vem depois do novo que será removido
                     auxiliar->proximo->anterior = auxiliar->anterior; //o anterior do próximo nodo aponta para o que vem antes do nodo que será removido
                     free(auxiliar);
-                    tamanho -= 1;
+                    tamanhoLista -= 1;
                     flag += 1;
                     return;
                 }
@@ -263,7 +263,7 @@ void apagar(Lista *lista, void*pBuffer){
                     auxiliar->anterior->proximo = NULL; //o próximo do nodo anterior fica nulo
                     lista->fim = auxiliar->anterior; //o final da lista agora aponta pro nodo anterior
                     free(auxiliar);
-                    tamanho -= 1;
+                    tamanhoLista -= 1;
                     flag += 1;
                     return;
                 }
@@ -554,7 +554,7 @@ void pop(Lista *filaP){
 }
 
 void idadeCrescente(Lista *lista, void *pBuffer){
-    if(tamanho == 0){
+    if(tamanhoLista == 0){
         printf("lista vazia.\n");
     }
     else{
@@ -563,7 +563,7 @@ void idadeCrescente(Lista *lista, void *pBuffer){
         Contato *contato;
         contato = lista->inicio;
         tamanhoFila = 0;
-        if(tamanho == 1){
+        if(tamanhoLista == 1){
             filaP = intCrescente(filaP, contato, pBuffer);
         }
         else{
@@ -578,7 +578,7 @@ void idadeCrescente(Lista *lista, void *pBuffer){
 }
 
 void idadeDecrescente(Lista *lista, void *pBuffer){
-    if(tamanho == 0){
+    if(tamanhoLista == 0){
         printf("lista vazia.\n");
     }
     else{
@@ -587,7 +587,7 @@ void idadeDecrescente(Lista *lista, void *pBuffer){
         Contato *contato;
         contato = lista->inicio;
         tamanhoFila = 0;
-        if(tamanho == 1){
+        if(tamanhoLista == 1){
             filaP = intDecrescente(filaP, contato, pBuffer);
         }
         else{
@@ -602,7 +602,7 @@ void idadeDecrescente(Lista *lista, void *pBuffer){
 }
 
 void nomeCrescente(Lista *lista, void *pBuffer){
-    if(tamanho == 0){
+    if(tamanhoLista == 0){
         printf("lista vazia.\n");
     }
     else{
@@ -611,7 +611,7 @@ void nomeCrescente(Lista *lista, void *pBuffer){
         Contato *contato;
         contato = lista->inicio;
         tamanhoFila = 0;
-        if(tamanho == 1){
+        if(tamanhoLista == 1){
             filaP = stringCrescente(filaP, contato, pBuffer);
         }
         else{
@@ -626,7 +626,7 @@ void nomeCrescente(Lista *lista, void *pBuffer){
 }
 
 void nomeDecrescente(Lista *lista, void *pBuffer){
-    if(tamanho == 0){
+    if(tamanhoLista == 0){
         printf("lista vazia.\n");
     }
     else{
@@ -635,7 +635,7 @@ void nomeDecrescente(Lista *lista, void *pBuffer){
         Contato *contato;
         contato = lista->inicio;
         tamanhoFila = 0;
-        if(tamanho == 1){
+        if(tamanhoLista == 1){
             filaP = stringDecrescente(filaP, contato, pBuffer);
         }
         else{
@@ -668,7 +668,7 @@ void clear(Lista *lista, void *pBuffer){
         auxiliar = contAux;
         contAux = contAux->proximo;
         free(auxiliar);
-        tamanho -= 1;
+        tamanhoLista -= 1;
     }
     free(lista);
     free(pBuffer);
