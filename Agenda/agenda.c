@@ -51,7 +51,7 @@ int main(){
     // posição 1: i
     // posição 2: sel (switch)
     // posição 3: flag
-    // posicao 4: tamanhoLista filaP
+    // posicao 4: tamanho filaP
     // posição 5: j
     // posição 6: 10 char de nomeAux 
     tamanhoLista = 0;
