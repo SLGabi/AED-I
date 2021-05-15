@@ -233,6 +233,26 @@ void SegundoCenario(){
     printf("\n\n");
     clear(pRaiz);
     pRaiz = NULL;
+
+    printf("TESTE\n");
+    Insere(&pRaiz, 20);
+    Insere(&pRaiz, 10);
+    Insere(&pRaiz, 25);
+    Insere(&pRaiz, 5);
+    Insere(&pRaiz, 15);
+    Insere(&pRaiz, 23);
+    Insere(&pRaiz, 13);
+    //Insere(&pRaiz, 3);
+    printf("--ARVORE ANTES DE REMOVER O 10--\n");
+    listarArvore(pRaiz);
+    printf("\n");
+    //Removendo o 1
+    Remover(&pRaiz, 10);
+    printf("--ARVORE DEPOIS DE REMOVER O 10--\n");
+    listarArvore(pRaiz);
+    printf("\n\n");
+    clear(pRaiz);
+    pRaiz = NULL;
 }
 
 void PrimeiroCenario(No *pRaiz){
@@ -302,7 +322,7 @@ int Remover(No** ppRaiz, int x){
         }
         //tem dois filhos
         else{
-            No *temporario = procuraMenor((*ppRaiz)->pEsq);
+            No *temporario = procuraMenor((*ppRaiz)->pDir);
             (*ppRaiz)->Reg.dado = temporario->Reg.dado;
             Remover(&(*ppRaiz)->pDir, (*ppRaiz)->Reg.dado);
             Balanceamento(ppRaiz);
