@@ -18,13 +18,13 @@ int main(){
     int *vetor, *vetorAux, tam = 0, random, op;
     struct timeval begin, end;
 
-    srand(time(NULL));
     printf("Qual o tamanho do vetor que desejas?\n");
     scanf("%d", &tam);
     vetor = malloc(sizeof(int) * tam);
+    srand(time(NULL));
 
     for(int i=0; i<tam; i++){
-        random = rand()%1000;
+        random = rand()%100000;
         vetor[i] = random;
     }
     do{
@@ -164,14 +164,15 @@ void selectionSort(int *vetor, int tam){
 
 void quickSort(int *vetor, int esquerda, int direita){
 
-    int meio,temp,i,j;
+    int pivo,temp,i,j;
     i = esquerda;
     j = direita;
-    meio = vetor[(esquerda + direita)/2];
+    pivo = vetor[esquerda + (rand() %(direita - esquerda))]; //pivo aleatório
+    //pivo = vetor[(esquerda + direita)/2]; //pivo no meio
     do{
-        while(vetor[i] < meio)
+        while(vetor[i] < pivo)
             i++;
-        while(meio < vetor[j])
+        while(pivo < vetor[j])
             j--;
         if(i <= j){
             temp = vetor[i];
