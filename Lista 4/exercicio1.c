@@ -144,18 +144,17 @@ void insertionSort(int *vetor, int tam){
 }
 
 void selectionSort(int *vetor, int tam){
-    int min, tmp, i, j, min_id;
-
+    int min, tmp, i, j, min_id = 0; 
     for(i = 0; i < (tam-1); i++) {
-        min = vetor[i];
+        min = vetor[i]; 
         for( j = (i + 1); j < tam; j++) {
-            if(vetor[j] < min) {
+            if(vetor[j] < min) { 
                 min = vetor[j];
                 min_id = j;
             }
         }
         tmp = vetor[i];
-        vetor[i] = vetor[min_id];
+        vetor[i] = vetor[min_id]; 
         vetor[min_id] = tmp;
         min_id = i + 1;
         
@@ -230,6 +229,8 @@ void merge(int *vetor, int inicio, int meio, int fim){
         for(j=0, k=inicio; j<tamanho; j++, k++){ //copia ordenado pro vetor de novo
             vetor[k] = temp[j];
         }
+
+        
     }
     free(temp);
 }
